@@ -1,0 +1,50 @@
+CREATE TABLE sys_tipo_consulta ( 
+	id_tipo_consulta INT NOT NULL AUTO_INCREMENT ,  
+	nombre_consulta VARCHAR(250) NOT NULL ,  
+	fecha_alta TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,    
+	PRIMARY KEY  (id_tipo_consulta)
+) ENGINE = InnoDB;
+
+insert into sys_tipo_consulta (nombre_consulta) values ('INSERT');
+insert into sys_tipo_consulta (nombre_consulta) values ('UPDATE');
+insert into sys_tipo_consulta (nombre_consulta) values ('DELETE');
+
+CREATE TABLE sys_pantalla ( 
+	id_pantalla INT NOT NULL AUTO_INCREMENT ,  
+	nombre_pantalla VARCHAR(250) NOT NULL ,  
+	fecha_alta TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,    
+	PRIMARY KEY  (id_pantalla)
+) ENGINE = InnoDB;
+
+insert into sys_pantalla (nombre_pantalla) values ('1.1 AJUSTE DE INVENTARIO');
+insert into sys_pantalla (nombre_pantalla) values ('1.2 AJUSTE DE INVENTARIO EN MATRIZ');
+insert into sys_pantalla (nombre_pantalla) values ('1.10 MOVIMIENTOS DE ALMACEN');
+insert into sys_pantalla (nombre_pantalla) values ('1.17 TRANSFERENCIAS');
+insert into sys_pantalla (nombre_pantalla) values ('1.21 VALIDACION DE TRANSFERENCIAS');
+insert into sys_pantalla (nombre_pantalla) values ('1.27 LISTADO DE TRANSFERENCIAS RAPIDAS');
+insert into sys_pantalla (nombre_pantalla) values ('1.31 AJUSTES DE INVENTARIO POR CONTEO');
+insert into sys_pantalla (nombre_pantalla) values ('1.34 RECPECION DE TRANSFERENCIAS EN SUCURSAL');
+insert into sys_pantalla (nombre_pantalla) values ('1.22 RECEPCION DE TRANSFERENCIAS (RESOLUCION DE CONTEO)');
+insert into sys_pantalla (nombre_pantalla) values ('1.35 TRANSFERENCIAS CON RACION');
+insert into sys_pantalla (nombre_pantalla) values ('2.4 NOTAS DE VENTAS (CIERRE DE LA NOTA DE VENTA)');
+insert into sys_pantalla (nombre_pantalla) values ('VALIDACIONDE NOTA DE VENTA');
+insert into sys_pantalla (nombre_pantalla) values ('DEVOLUCIÓN ANTES DE VALIDAR');
+insert into sys_pantalla (nombre_pantalla) values ('EDICION DE NOTA');
+insert into sys_pantalla (nombre_pantalla) values ('DEVOLUCION DESPUES DE VALIDAR');
+insert into sys_pantalla (nombre_pantalla) values ('3.11 VALIDACION DE REMISIONES');
+insert into sys_pantalla (nombre_pantalla) values ('7.4 RESETEAR INVENATARIOS');
+insert into sys_pantalla (nombre_pantalla) values ('7.12 IGUALACIONDE INVENTARIO PRODUCTO-INVENTARIO PROVEEDOR PRODUCTO');
+
+
+CREATE TABLE ec_bitacora_movimiento_consulta ( 
+	id_bitacora_mov_consulta INT NOT NULL AUTO_INCREMENT ,  
+	id_registro INT NOT NULL ,  
+	nombre_tabla VARCHAR(250) NOT NULL ,  
+	id_pantalla_movimientos_almacen INT NOT NULL ,
+	id_tipo_consulta INT NOT NULL ,  	
+	regs_before VARCHAR(5000) NOT NULL ,
+	sentencia_query VARCHAR(5000) NOT NULL ,  
+	fecha_alta TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+	PRIMARY KEY  (id_bitacora_mov_consulta)
+) ENGINE = InnoDB;
+
